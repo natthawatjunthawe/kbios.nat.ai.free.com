@@ -1,13 +1,13 @@
 {
-  "globalBg": "https://th.pngtree.com/freepng/fresh-coconut-juice-with-coconut-water-splash-and-leaves_16203679.html"resources": [
+  "globalBg": ""resources": [
     { 
       "name": "โค้ดเว็บหน้าแรก", 
       "url": "index.html", 
       "type": "code" 
     },
     { 
-      "name": "รูปพื้นหลังคริสต์มาส", 
-      "url": "https://ลิงก์รูปภาพ/christmas.jpg", 
+      "name": "รูปพื้นหลังมะพร้าว", 
+      "url": "", 
       "type": "image" 
     },
     { 
