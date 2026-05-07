@@ -12,27 +12,27 @@
   "resources": [
     {
       "name": "โค้ดเว็บหน้าแรก",
-      "url": "index.html",
-      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/index.html"
+      "url": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/index.html",
+      "type": "code"
     },
     {
       "name": "CSS หลัก",
-      "url": "style.css",
-      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/style.css"
+      "url": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/style.css",
+      "type": "code"
     },
     {
       "name": "ระบบ AI logic",
-      "url": "script.js",
-      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/script.js"
+      "url": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/script.js",
+      "type": "code"
     },
     {
       "name": "ไฟล์โมเดลหลัก",
-      "url": "db.json",
-      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/db.json"
+      "url": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/db.json",
+      "type": "code"
     },
     {
-      "name": "รูปพื้นหลังมะพร้าว",
-      "url": "URL_รูปภาพที่นี่",
+      "name": "รูปพื้นหลัง",
+      "url": "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg",
       "type": "image"
     }
   ],
