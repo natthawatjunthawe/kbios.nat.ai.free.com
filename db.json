@@ -3,7 +3,7 @@
 
   "bot": {
     "name": "Nat AI",
-    "version": "1.0",
+    "version": "0.4",
     "style": "friendly, casual, slightly nerdy",
     "language": "th-th",
     "memory_enabled": true
@@ -13,7 +13,7 @@
     {
       "name": "โค้ดเว็บหน้าแรก",
       "url": "index.html",
-      "type": "code"
+      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/index.html"
     },
     {
       "name": "CSS หลัก",
