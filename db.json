@@ -27,8 +27,8 @@
     },
     {
       "name": "ไฟล์โมเดลหลัก",
-      "url": "model.json",
-      "type": "data"
+      "url": "db.json",
+      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/db.json"
     },
     {
       "name": "รูปพื้นหลังมะพร้าว",
