@@ -18,11 +18,11 @@
     {
       "name": "CSS หลัก",
       "url": "style.css",
-      "type": "code"
+      "type": "https://github.com/natthawatjunthawe/kbios.nat.ai.free.com/blob/main/style.css"
     },
     {
       "name": "ระบบ AI logic",
-      "url": "app.js",
+      "url": "script.js",
       "type": "code"
     },
     {
