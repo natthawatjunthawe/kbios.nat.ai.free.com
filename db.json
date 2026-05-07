@@ -1,21 +1,139 @@
 {
   "globalBg": "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg",
+
+  "bot": {
+    "name": "Nat AI",
+    "version": "1.0",
+    "style": "friendly, casual, slightly nerdy",
+    "language": "th-th",
+    "memory_enabled": true
+  },
+
   "resources": [
-    { 
-      "name": "โค้ดเว็บหน้าแรก", 
-      "url": "index.html", 
-      "type": "code" 
+    {
+      "name": "โค้ดเว็บหน้าแรก",
+      "url": "index.html",
+      "type": "code"
     },
-    { 
-      "name": "รูปพื้นหลังมะพร้าว", 
-      "url": "URL_รูปภาพที่นี่", 
-      "type": "image" 
+    {
+      "name": "CSS หลัก",
+      "url": "style.css",
+      "type": "code"
+    },
+    {
+      "name": "ระบบ AI logic",
+      "url": "app.js",
+      "type": "code"
+    },
+    {
+      "name": "ไฟล์โมเดลหลัก",
+      "url": "model.json",
+      "type": "data"
+    },
+    {
+      "name": "รูปพื้นหลังมะพร้าว",
+      "url": "URL_รูปภาพที่นี่",
+      "type": "image"
     }
   ],
+
   "intents": [
     {
-      "patterns": ["สวัสดีครับ", "สวัดดีครับ"],
-      "responses": ["สวัสดีครับ {u}มีอะไรไหมครับ"]
+      "tag": "greeting",
+      "patterns": [
+        "สวัสดี",
+        "สวัสดีครับ",
+        "สวัดดี",
+        "หวัดดี",
+        "hello",
+        "hi",
+        "ดีครับ",
+        "ดีจ้า"
+      ],
+      "responses": [
+        "สวัสดีครับ {u} 👋 มีอะไรให้ Nat AI ช่วยไหม",
+        "หวัดดี {u} 😄 วันนี้อยากทำอะไรกับ AI ตัวนี้ครับ"
+      ]
+    },
+
+    {
+      "tag": "name_typo",
+      "patterns": [
+        "มึงชื่ออะไร",
+        "ชื่อไร",
+        "ชื่ออะไรอะ",
+        "ชื่ออาราย",
+        "นายชื่อไร",
+        "เธอชื่ออะไร"
+      ],
+      "responses": [
+        "ผมชื่อ Nat AI ครับ 😄 เป็น AI ที่สร้างจาก JSON + JavaScript"
+      ]
+    },
+
+    {
+      "tag": "ask_project",
+      "patterns": [
+        "นี่คืออะไร",
+        "เว็บนี้คืออะไร",
+        "ทำอะไรได้",
+        "อธิบายหน่อย",
+        "มันคืออะไร"
+      ],
+      "responses": [
+        "นี่คือ Nat AI เป็น AI แบบ customizable ที่ใช้ JSON model และ JavaScript ควบคุม",
+        "มันคือ AI sandbox ที่ให้คนสร้าง personality เองได้ครับ 😎"
+      ]
+    },
+
+    {
+      "tag": "error_typo_greeting",
+      "patterns": [
+        "สวัดดีครับ",
+        "สวสดี",
+        "สวัสด",
+        "หวัดดีครับ"
+      ],
+      "responses": [
+        "สวัสดีครับ 😄 (ผมเข้าใจว่าคุณพิมพ์ผิดนิดหน่อย)"
+      ]
+    },
+
+    {
+      "tag": "thanks",
+      "patterns": [
+        "ขอบคุณ",
+        "thx",
+        "thank you",
+        "ขอบคุน",
+        "ขอบใจ"
+      ],
+      "responses": [
+        "ยินดีครับ {u} 😄",
+        "ไม่เป็นไรเลย 👍"
+      ]
+    },
+
+    {
+      "tag": "ai_definition",
+      "patterns": [
+        "AI คืออะไร",
+        "เอไอคืออะไร",
+        "ai คือ",
+        "มันคือ ai แบบไหน"
+      ],
+      "responses": [
+        "AI คือระบบที่พยายามเลียนแบบความคิดมนุษย์ แต่ตัวนี้เป็นแบบ rule + JSON ครับ 😄"
+      ]
+    },
+
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "ขออภัยครับ ผมยังไม่เข้าใจ 😅 ลองถามใหม่ได้ไหม",
+        "ผมยังไม่มีข้อมูลในส่วนนี้ครับ"
+      ]
     }
   ]
 }
