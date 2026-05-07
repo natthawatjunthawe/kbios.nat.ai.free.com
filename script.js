@@ -47,7 +47,7 @@ const API_URL = "https://api.groq.com/openai/v1/chat/completions";let oDB={inten
             for (let i of oDB.intents) {
                 if (i.patterns.some(p => lw.includes(p))) {
                     let rArr = i.responses;
-                    return rArr[Math.floor(Math.random() * rArr.length)].replace(/{u}/g, st.un) + " (ตอนนี้ฉันออฟไลน์อยู่ ตอบได้แค่นี้แหละ)";
+                    return rArr[Math.floor(Math.random() * rArr.length)].replace(/{u}/g, st.un);
                 }
             }
         }
