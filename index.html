@@ -1,1 +1,166 @@
-<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>Nat AI</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script><script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></head><body data-theme="dark"><button id="sbt" onclick="tSB()">☰</button><div id="sb"><div class="p-area" onclick="oSt('account')"><img id="uPfp" class="pfp" src=""><div class="p-name" id="uName"></div></div><button class="btn btn-primary" onclick="nC()" style="justify-content:center;margin-bottom:10px">+ เพิ่มแชทใหม่</button><input type="text" id="sCh" class="s-inp" placeholder="ค้นหาแชท..." oninput="rU()"><div id="hL"></div><button class="btn" onclick="oSt('general')">การตั้งค่า</button></div><div id="main"><div id="header"><div style="display:flex;align-items:center;gap:10px"><div id="hCp" class="bot-icon ai" style="width:30px;height:30px;font-size:12px"></div><div style="font-weight:600;font-size:18px" id="hTitle">Nat</div></div><div style="display:flex;gap:10px"><span id="tmpBadge" class="badge" style="display:none;align-items:center;padding:5px 10px">โหมดชั่วคราว</span><button class="act-btn" onclick="shC()" style="width:30px;height:30px">➦</button></div></div><div id="chat" onscroll="chkS()"></div><button id="scD" onclick="scB()">↓</button><div id="inpW"><div id="inpC"><div id="pv" style="display:none"><div id="pvC"></div><div id="pvN" class="file-name"></div><button onclick="cPv()">✕</button></div><div class="inp-row"><div class="menu-wrapper" style="position:relative;display:flex;align-items:center;"><button id="plusBtn" class="act-btn" onclick="tglM(event)">+</button><div id="m-pop" class="m-pop"><button onclick="reqIt('image')">ขอรูปภาพ</button><button onclick="reqIt('code')">ขอไฟล์</button><hr class="m-div"><button onclick="cg('fI').click()">อัปโหลดไฟล์</button></div></div><input type="file" id="fI" style="display:none" onchange="hF(event)"><button id="micB" class="act-btn" onclick="tM()">🎙</button><div id="inpBox"><textarea id="inp" placeholder="คุยกับ Nat..." rows="1" oninput="ajH(this)" onkeydown="hK(event)"></textarea></div><button id="sB" class="act-btn snd-btn" onclick="sM()" disabled>➤</button></div></div></div><div style="font-size:11px;opacity:.5;text-align:center;padding:5px 0;">Nat เป็น Ai อาจผิดพลาดได้ โปรดตรวจสอบข้อมูล</div></div><div id="stMdl" class="mdl"><div class="st-head"><button class="act-btn" onclick="cg('stMdl').style.display='none'">←</button><h2>การตั้งค่า</h2></div><div class="st-body"><div class="st-menu"><button class="t-btn act" onclick="sT('general')">ฟีเจอร์</button><button class="t-btn" onclick="sT('account')">โปรไฟล์</button><button class="t-btn" onclick="sT('appearance')">ลักษณะ</button><button class="t-btn" onclick="sT('learning')">โมเดล</button><button class="t-btn" onclick="sT('data')">จัดการข้อมูล</button></div><div class="st-main"><div id="s-general" class="st-sec act"><div class="st-item"><label>ส่งข้อความด้วยการ Enter</label><div class="desc">หากปิดใช้งาน ให้ใช้ Shift + Enter เพื่อส่ง</div><input type="checkbox" id="st-ent"></div><div class="st-item"><label>แชทชั่วคราว</label><div class="desc">ข้อความจะไม่ถูกบันทึกลงในประวัติการแชท</div><input type="checkbox" id="st-tmp" onchange="tTmp(this)"></div><div class="st-item"><label>แนบไฟล์จำลอง</label><div class="desc">อนุญาตให้แนบรูปหรือไฟล์กลับมา</div><input type="checkbox" id="st-aia"></div><button class="btn btn-primary" style="width:fit-content" onclick="svSt()">บันทึก</button></div><div id="s-account" class="st-sec"><div class="st-item"><label>รูปโปรไฟล์ผู้ใช้</label><div style="display:flex;align-items:center;gap:15px"><img id="st-pfp-img" class="pfp" style="width:60px;height:60px"><button class="btn" onclick="cg('st-pI').click()">อัปโหลด</button><input type="file" id="st-pI" style="display:none" accept="image/*" onchange="hP(event,'u')"><button class="btn" onclick="rPfp('u')">ลบรูป</button></div></div><div class="st-item"><label>รูปโปรไฟล์ของแชท</label><div style="display:flex;align-items:center;gap:15px"><img id="st-cp-img" class="pfp" style="width:60px;height:60px"><button class="btn" onclick="cg('st-cI').click()">อัปโหลด</button><input type="file" id="st-cI" style="display:none" accept="image/*" onchange="hP(event,'a')"><button class="btn" onclick="rPfp('a')">ลบรูป</button></div></div><div class="st-item"><label>ชื่อผู้ใช้</label><input type="text" id="st-un"></div><div class="st-item"><label>ชื่อแชท</label><input type="text" id="st-bn"></div><button class="btn btn-primary" style="width:fit-content" onclick="svSt()">บันทึก</button></div><div id="s-appearance" class="st-sec"><div class="st-item"><label>ธีม</label><select id="st-th"><option value="dark">มืด</option><option value="light">สว่าง (ค่าเริ่มต้น)</option></select></div><div class="st-item"><label>ขนาดตัวอักษร</label><select id="st-fz"><option value="8px">เล็กสุด (อ่านยากเล็กน้อย)</option><option value="9px">9</option><option value="10px">10</option><option value="11px">11</option><option value="12px">12</option><option value="13px">13</option><option value="14px">14 (ค่าเริ่มต้น แนะนำ)</option><option value="15px">15</option></option><option value="16px">16</option></option><option value="17px">17</option><option value="18px">ใหญ่ (รองรับทุกอุปกรณ์)</option>option value="25px">ใหญ่สุด (แนะนำสำหรับคอมพิวเตอร์)</option></select></div><div class="st-item"><label>ความโค้งมนของกล่องข้อความ</label><select id="st-br"><option value="0px">เหลี่ยม</option><option value="16px">ปานกลาง</option><option value="30px">โค้งมนสุด (ค่าเริ่มต้น แนะนำ)</option></select></div><button class="btn btn-primary" style="width:fit-content" onclick="svSt()">บันทึก</button></div><div id="s-learning" class="st-sec"><div class="st-item"><label>ชุดโมเดล</label><div class="desc">เพิ่มคำศัพท์หรือประโยคเพื่อที่จะให้ตอบตามที่กำหนด</div><div class="lrn-box"><input type="text" id="l-q" placeholder="คำถาม"><input type="text" id="l-a" placeholder="คำตอบ"><button class="btn btn-primary" onclick="aLrn()">เพิ่ม</button></div><div class="lrn-list" id="lrnL"></div></div></div><div id="s-data" class="st-sec"><div class="st-item"><label>ส่งออกข้อมูล</label><button class="btn" onclick="exD()">ส่งออก</button></div><div class="st-item"><label>นำเข้าข้อมูล</label><button class="btn" onclick="cg('impF').click()">นำเข้า</button><input type="file" id="impF" style="display:none" accept=".kbiossupwed,.kbios10" onchange="imD(event)"></div><div class="st-item"><label style="color:#ff4d4d">การล้างข้อมูล</label><button class="btn" style="background:#ff4d4d;color:#fff" onclick="cDel('clD')">ลบแชททั้งหมด</button></div><div class="st-item"><label style="color:#ff4d4d">รีเซ็ตการตั้งค่า</label><button class="btn" style="background:#ff4d4d;color:#fff" onclick="cDel('rsSt')">รีเซ็ต</button></div></div></div></div></div><div id="mRn" class="mdl" style="background:rgba(0,0,0,.6);align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(3px)"><div style="background:var(--bg);padding:25px;border-radius:24px;width:90%;max-width:400px;display:flex;flex-direction:column;gap:20px;box-shadow:0 10px 25px rgba(0,0,0,.2)"><h3 id="mdlT">เปลี่ยนชื่อ</h3><input type="text" id="rn-inp" style="padding:14px;border:1px solid var(--cb);border-radius:12px;background:var(--sb);color:var(--txt)"><div style="display:flex;gap:10px;justify-content:flex-end" id="mdlB"><button class="btn" onclick="cg('mRn').style.display='none'">ยกเลิก</button><button class="btn btn-primary" onclick="sRn()">บันทึก</button></div></div></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Nat AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root{--bg:#ffffff;--txt:#1f1f1f;--sb:#f0f4f9;--cb:#e3e3e3;--ac:#0b57d0;--hov:#d3e3fd;--msg-u:#f0f4f9;--msg-a:#ffffff;--fz:15px;--br:24px}[data-theme="dark"]{--bg:#131314;--txt:#e3e3e3;--sb:#1e1f20;--cb:#282a2c;--ac:#a8c7fa;--hov:#333538;--msg-u:#1e1f20;--msg-a:#131314}*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:var(--fz)}body{display:flex;height:100vh;background:var(--bg);color:var(--txt);overflow:hidden}button,input,select{outline:none;font-family:inherit}#sb{width:285px;background:var(--sb);display:flex;flex-direction:column;padding:3px 10px 55px 10px;z-index:10;transition:.3s;flex-shrink:0}#sbt{display:none;position:absolute;top:10px;left:15px;z-index:20;width:40px;height:40px;border:none;background:transparent;color:var(--txt);font-size:20px;cursor:pointer}#main{flex:1;display:flex;flex-direction:column;position:relative;background:var(--bg)}#chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:20px;scroll-behavior:smooth;background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay;background-color:rgba(var(--bg-rgb, 255, 255, 255), 0.1)}#input-area{padding:15px 20px 25px;background:var(--bg)}#inp-wrap{max-width:800px;margin:0 auto;background:var(--sb);border-radius:30px;padding:8px 15px;display:flex;align-items:flex-end;gap:10px;position:relative;box-shadow:0 2px 10px rgba(0,0,0,0.05)}#inp{flex:1;border:none;background:transparent;color:var(--txt);padding:10px 5px;resize:none;max-height:200px;min-height:24px;line-height:1.5}#pv{display:none;position:absolute;bottom:100%;left:20px;background:var(--sb);padding:10px;border-radius:15px;margin-bottom:10px;align-items:center;gap:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1);border:1px solid var(--cb)}#pvC{width:40px;height:40px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}#pvC img{width:100%;height:100%;object-fit:cover}.msg-wrap{display:flex;gap:12px;max-width:85%;animation:fadeIn 0.3s ease}.msg{padding:12px 18px;border-radius:22px;line-height:1.6;position:relative;word-break:break-word}.u-wrap{background:var(--msg-u);color:var(--txt);border-bottom-right-radius:4px;align-self:flex-end}.a-wrap{background:var(--msg-a);color:var(--txt);border-bottom-left-radius:4px;border:1px solid var(--cb)}.bot-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;margin-top:auto}.us{background:var(--ac);color:#fff}.ai{background:#34a853;color:#fff}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        /* ซ่อนส่วนตกแต่งที่เหลือเพื่อความคลีน */
+        .ci{display:flex;align-items:center;padding:10px;border-radius:12px;margin-bottom:5px;cursor:pointer;transition:.2s}.ci:hover{background:var(--hov)}.ci.act{background:var(--hov);color:var(--ac)}
+    </style>
+</head>
+<body data-theme="dark">
+    <button id="sbt" onclick="tSB()">☰</button>
+    <div id="sb">
+        <div class="p-area" onclick="oSt('account')" style="cursor:pointer;padding:15px 5px;display:flex;align-items:center;gap:10px">
+            <img id="uPfp" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+            <div id="uName" style="font-weight:bold"></div>
+        </div>
+        <button onclick="nC()" style="width:100%;padding:12px;border-radius:12px;border:none;background:var(--ac);color:#fff;cursor:pointer;margin-bottom:15px">+ เริ่มแชทใหม่</button>
+        <div id="hL" style="flex:1;overflow-y:auto"></div>
+    </div>
+    <div id="main">
+        <div id="chat"></div>
+        <div id="input-area">
+            <div id="pv"><div id="pvC"></div><div id="pvN"></div><button onclick="cPv()">✕</button></div>
+            <div id="inp-wrap">
+                <button onclick="tglM(event)" id="plusBtn" style="border:none;background:transparent;font-size:20px;cursor:pointer">+</button>
+                <textarea id="inp" placeholder="พิมพ์ข้อความ..." oninput="ajH(this)" onkeydown="hK(event)"></textarea>
+                <button id="sB" onclick="sM()" style="border:none;background:transparent;color:var(--ac);font-size:20px;cursor:pointer" disabled>➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const d=document,ls=localStorage,cg=id=>d.getElementById(id);
+        const API_KEY = "ใส่_API_KEY_ของคุณที่นี่";
+        const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+        
+        const oDB = {
+            globalBg: "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg",
+            resources: [
+                { name: "โค้ดเว็บหน้าแรก", url: "index.html", type: "code" },
+                { name: "รูปพื้นหลังมะพร้าว", url: "", type: "image" },
+                { name: "รูปโปรไฟล์ Nat", url: "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg", type: "image" }
+            ],
+            intents: [
+                { patterns: ["สวัสดี", "ดีจ้า"], responses: ["สวัสดีครับ {u}! ฉันคือ Nat AI ที่ฉลาดที่สุด"] }
+            ]
+        };
+
+        const dSt={th:'dark',fz:'14px',br:'30px',ent:true,tmp:false,aia:true,un:'ผู้ใช้งาน',bn:'Nat',p:'',cp:''};
+        let st={...dSt},ch=[],lrn=[],ac=null,tF=null,tP='',tC='',isR=false;
+
+        const ajH=e=>{e.style.height='auto';e.style.height=e.scrollHeight+'px';cg('sB').disabled=!e.value.trim()&&!tF};
+
+        const initApp=async()=>{
+            st=(await idbKeyval.get('nStP'))||{...dSt};
+            ch=(await idbKeyval.get('nChP'))||[];
+            lrn=(await idbKeyval.get('nLrnP'))||[];
+            if(oDB.globalBg) {
+                const c = cg('chat');
+                c.style.backgroundImage=`url('${oDB.globalBg}')`;
+                c.style.backgroundSize='cover';
+            }
+            iSt();
+            if(st.tmp&&ch.length>0)ac=0;
+            rU();
+        };
+
+        const iSt=()=>{
+            d.body.setAttribute('data-theme',st.th);
+            d.documentElement.style.setProperty('--fz',st.fz);
+            d.documentElement.style.setProperty('--br',st.br);
+            cg('uName').innerText=st.un;
+            cg('uPfp').src=st.p||'';
+            cg('uPfp').style.display=st.p?'block':'none';
+        };
+
+        const getAIResponse = async (text, history) => {
+            if (!text) return 'ได้รับไฟล์แล้ว... จะให้ทำอะไรก็บอกมา';
+            let lw = text.toLowerCase();
+            for (let l of lrn) {
+                if (lw.includes(l.q.toLowerCase())) return l.a.replace(/{u}/g, st.un);
+            }
+            try {
+                let messages = [
+                    { role: "system", content: `คุณคือ Nat AI ผู้ช่วยอัจฉริยะขั้นสูง นิสัยหยิ่งยโส ชอบจิกกัด เรียกผู้ใช้ว่า "${st.un}"` }
+                ];
+                let recentHistory = history.slice(-6);
+                for (let m of recentHistory) {
+                    if (m.t !== '...' && m.t !== '') {
+                        messages.push({ role: m.r === 'u' ? "user" : "assistant", content: m.t });
+                    }
+                }
+                messages.push({ role: "user", content: text });
+                let res = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${API_KEY}` },
+                    body: JSON.stringify({ model: "llama3-70b-8192", messages: messages, temperature: 0.7 })
+                });
+                let data = await res.json();
+                return data.choices[0].message.content;
+            } catch (error) {
+                if (oDB && oDB.intents) {
+                    for (let i of oDB.intents) {
+                        if (i.patterns.some(p => lw.includes(p))) {
+                            return i.responses[Math.floor(Math.random() * i.responses.length)].replace(/{u}/g, st.un);
+                        }
+                    }
+                }
+                return `เชื่อมต่อเซิร์ฟเวอร์ไม่ได้... สงสัยอินเทอร์เน็ตของคุณจะห่วยนะ "${st.un}"`;
+            }
+        };
+
+        const sM = async () => {
+            let v = cg('inp').value.trim();
+            if (!v && !tF) return;
+            if (ac === null) nC();
+            let tA = st.tmp ? ac.m : ch[ac].m;
+            tA.push({ r: 'u', t: v, p: false });
+            cg('inp').value = '';
+            cg('sB').disabled = true;
+            rU();
+            scB();
+            tA.push({ r: 'a', t: '...', p: false });
+            rU();
+            let aiText = await getAIResponse(v, tA.slice(0, -1)); 
+            tA[tA.length - 1].t = aiText;
+            idbKeyval.set('nChP', ch);
+            rU();
+            scB();
+        };
+
+        const nC=()=>{
+            if(st.tmp) ac={n:'ชั่วคราว',m:[]};
+            else { ch.push({n:'แชทใหม่',m:[]}); ac=ch.length-1; }
+            rU();
+        };
+
+        const rU=()=>{
+            let mH='', c=st.tmp?(ac?ac.m:[]):(ac!==null?ch[ac].m:[]);
+            c.forEach(x=>{
+                let cls=x.r==='u'?'u-wrap':'a-wrap';
+                let side=x.r==='u'?'justify-content:flex-end':'';
+                mH+=`<div class="msg-wrap" style="${side}"><div class="msg ${cls}">${marked.parse(x.t)}</div></div>`;
+            });
+            cg('chat').innerHTML=mH;
+        };
+
+        const scB=()=>{let c=cg('chat');c.scrollTop=c.scrollHeight};
+        const hK=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sM()}};
+        const tSB=()=>cg('sb').classList.toggle('act');
+        const cPv=()=>{tF=null;cg('pv').style.display='none'};
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
