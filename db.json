@@ -1,5 +1,6 @@
 {
-  "globalBg": "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg":,
+  "globalBg": "https://pbs.twimg.com/media/Dd2EsNZVMAAIsSK.jpg",
+  "resources": [
     { 
       "name": "โค้ดเว็บหน้าแรก", 
       "url": "index.html", 
@@ -7,15 +8,10 @@
     },
     { 
       "name": "รูปพื้นหลังมะพร้าว", 
-      "url": "", 
-      "type": "image" 
-    },
-    { 
-      "name": "รูปโปรไฟล์ Nat", 
-      "url": "https://ลิงก์รูปภาพ/nat-profile.jpg", 
+      "url": "URL_รูปภาพที่นี่", 
       "type": "image" 
     }
-
+  ],
   "intents": [
     {
       "patterns": ["สวัสดี", "ดีจ้า"],
