@@ -89,6 +89,7 @@ let oDB={intents:[]};Promise.all(
 
             return res.replace(/{u}/g, st.un);
         }
+return "ฉันยังไม่มีข้อมูลนี้";
     }
 
     let fb = oDB.intents.find(x => x.tag === 'fallback');
