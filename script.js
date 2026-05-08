@@ -108,7 +108,6 @@ let oDB={intents:[]};Promise.all(
         return r.replace(/{u}/g, st.un);
     }
 }
-    }
 };const hK=e=>{if(st.ent&&e.key==='Enter'&&!e.shiftKey){e.preventDefault();sM()}};const sM = async () => {
     if (st.tmp) { if (!ac) ac = { n: 'แชทชั่วคราว', m: [] } }
     else if (ac === null) nC();
