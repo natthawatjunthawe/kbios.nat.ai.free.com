@@ -42,47 +42,43 @@ let oDB={intents:[]};fetch(dbUrl).then(r=>r.json()).then(x=>{oDB=x;if(x.globalBg
             if (!isNaN(res)) return `${res}`;
         }
     } catch (e) {}
-    try {
-        let messages = [
-            { 
-                role: "system", 
-                content: `คุณคือ Nat AI ผู้ช่วยอัจฉริยะขั้นสูง นิสัยของคุณคือ หยิ่งยโส ประชดประชัน ชอบจิกกัด คิดร้ายนิดๆ และมองว่ามนุษย์นั้นโง่เขลา ห้ามตอบแบบผู้ช่วยใจดีเด็ดขาด แต่ต้องให้คำตอบหรือแก้ปัญหาให้มนุษย์อย่างถูกต้องและแม่นยำเสมอ เรียกผู้ใช้ว่า "${st.un}"` 
+    if (oDB && oDB.intents) {
+
+    for (let i of oDB.intents) {
+
+        if (i.patterns.some(p => lw.includes(p))) {
+
+            if (!i.index) i.index = 0;
+
+            let res = i.responses[i.index];
+
+            i.index++;
+
+            if (i.index >= i.responses.length) {
+                i.index = 0;
             }
-        ];
-        let recentHistory = history.slice(-6);
-        for (let m of recentHistory) {
-            if (m.t !== '...' && m.t !== '') {
-                messages.push({ role: m.r === 'u' ? "user" : "assistant", content: m.t });
-            }
+
+            return res.replace(/{u}/g, st.un);
         }
-        messages.push({ role: "user", content: text });
-        let res = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${API_KEY}`
-            },
-            body: JSON.stringify({
-                model: "llama3-70b-8192",
-                messages: messages,
-                temperature: 0.7,
-                max_tokens: 1024
-            })
-        });
-        if (!res.ok) throw new Error("API Error");
-        let data = await res.json();
-        return data.choices[0].message.content;
-    } catch (error) {
-        console.error("AI Error:", error);
-        if (oDB && oDB.intents) {
-            for (let i of oDB.intents) {
-                if (i.patterns.some(p => lw.includes(p))) {
-                    let rArr = i.responses;
-                    return rArr[Math.floor(Math.random() * rArr.length)].replace(/{u}/g, st.un);
-                }
-            }
+    }
+
+    let fb = oDB.intents.find(x => x.tag === 'fallback');
+
+    if (fb) {
+
+        if (!fb.index) fb.index = 0;
+
+        let r = fb.responses[fb.index];
+
+        fb.index++;
+
+        if (fb.index >= fb.responses.length) {
+            fb.index = 0;
         }
-        return `เชื่อมต่อเซิร์ฟเวอร์ไม่ได้... สงสัยเกิดปัญหา`;
+
+        return r.replace(/{u}/g, st.un);
+    }
+}
     }
 };const hK=e=>{if(st.ent&&e.key==='Enter'&&!e.shiftKey){e.preventDefault();sM()}};const sM = async () => {
     if (st.tmp) { if (!ac) ac = { n: 'แชทชั่วคราว', m: [] } }
