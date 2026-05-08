@@ -93,3 +93,32 @@ code {
 
 pre { background: #1e1e1e; padding: 15px; border-radius: 12px; overflow-x: auto; margin: 10px 0; border: 1px solid #333; }
 code { font-family: 'Consolas', monospace; color: #a8c7fa; }
+body[data-theme="blue"]{
+--bg:#0f172a;
+--msg:#1e3a8a;
+--txt:#fff;
+}
+
+body[data-theme="red"]{
+--bg:#2b0a0a;
+--msg:#991b1b;
+--txt:#fff;
+}
+
+body[data-theme="green"]{
+--bg:#052e16;
+--msg:#166534;
+--txt:#fff;
+}
+
+body[data-theme="purple"]{
+--bg:#2e1065;
+--msg:#6d28d9;
+--txt:#fff;
+}
+
+body[data-theme="orange"]{
+--bg:#3b1d00;
+--msg:#ea580c;
+--txt:#fff;
+}
