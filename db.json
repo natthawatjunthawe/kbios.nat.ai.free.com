@@ -1,5 +1,6 @@
 {
-﻿   "intents": [
+﻿   "intents": [
+  {
       "tag": "greeting",
       "patterns": [
         "สวัสดี",
