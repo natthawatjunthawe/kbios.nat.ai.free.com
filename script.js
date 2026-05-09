@@ -8,7 +8,7 @@ const d=document,ls=localStorage,cg=id=>d.getElementById(id);const dbFiles = [
 
 "true.json",
 
-"I.json",
+"l.json",
 
 "a.json",
 
@@ -31,8 +31,6 @@ const d=document,ls=localStorage,cg=id=>d.getElementById(id);const dbFiles = [
 "j.json",
 
 "k.json",
-
-"l.json",
 
 "m.json",
 
