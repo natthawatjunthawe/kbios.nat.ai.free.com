@@ -10,12 +10,10 @@
     scroll-behavior:smooth;
     padding-bottom:150px;
 
-    /* พื้นหลัง */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    /* สำคัญ */
     position: relative;
 }
 
